@@ -9,7 +9,7 @@ database(size,0xFF),size(size),numItems(0){}
 PatternDatabase::PatternDatabase(const size_t size,uint8_t init_val):
     database(size,init_val),size(size),numItems(0){}
 
-bool PatternDatabase::setNumMoves(const uint8_t ind, const uint8_t numMoves) {
+bool PatternDatabase::setNumMoves(const uint32_t ind, const uint8_t numMoves) {
     uint8_t oldMoves=this->getNumMoves(ind);
 
     if(oldMoves>numMoves){
@@ -23,7 +23,7 @@ bool PatternDatabase::setNumMoves(const RubiksCube &cube, const uint8_t numMoves
     return this->setNumMoves(this->getDatabaseIndex(cube),numMoves);
 }
 
-uint8_t PatternDatabase::getNumMoves(const uint8_t ind) const {
+uint8_t PatternDatabase::getNumMoves(const uint32_t ind) const {
     return this->database.get(ind);
 }
 
@@ -67,7 +67,6 @@ bool PatternDatabase::fromFile(const std::string &filePath) {
         reader.close();
         throw "Database corrupt! Failed to open Reade";
     }
-
     reader.seekg(0,ios::beg);
     reader.read(
             reinterpret_cast<char*> (this->database.data()),

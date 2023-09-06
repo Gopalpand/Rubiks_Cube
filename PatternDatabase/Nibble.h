@@ -1,5 +1,5 @@
-#ifndef RUBIKS_CUBE_SOLVER_NIBBLE_H
-#define RUBIKS_CUBE_SOLVER_NIBBLE_H
+#ifndef NIBBLE_H
+#define NIBBLE_H
 
 #include "bits/stdc++.h"
 

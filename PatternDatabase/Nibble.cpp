@@ -30,7 +30,7 @@ void Nibble::set(const size_t pos, const uint8_t val) {
 }
 
 uint8_t *Nibble::data() {
-    return this->data();
+    return this->arr.data();
 }
 
 const uint8_t *Nibble::data() const {

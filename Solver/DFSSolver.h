@@ -1,41 +1,43 @@
-#include "bits/stdc++.h"
+#include<bits/stdc++.h>
 #include "../Model/RubiksCube.h"
 
-#ifndef RUBIKS_CUBE_SOLVER_BFSSOLVER_H
-#define RUBIKS_CUBE_SOLVER_BFSSOLVER_H
+#ifndef SOLVER_DFSSOLVER_H
+#define SOLVER_DFSSOLVER_H
 
-template<typename T,typename H>
-
-class DFSSOLVER {
+template<typename T, typename H>
+class DFSSolver {
 private:
+
     vector<RubiksCube::MOVE> moves;
     int max_search_depth;
 
-    bool dfs(int dep){
-        if(rubikscube.isSolved()) return 1;
-        if(dep>rubikscube._max_search_depth) return 0;
-        for(int i=0;i<18;i++){
-            rubikscube.move(RubiksCube::MOVE(i));
+    bool dfs(int dep) {
+        if (rubiksCube.isSolved()) return true;
+        if (dep > max_search_depth) return false;
+        for (int i = 0; i < 18; i++) {
+            rubiksCube.move(RubiksCube::MOVE(i));
             moves.push_back(RubiksCube::MOVE(i));
-            if(dfs(RubiksCube::MOVE(i))) return 1;
+            if (dfs(dep + 1)) return true;
             moves.pop_back();
-            rubikscube.invert(RubiksCube::MOVE(i));
+            rubiksCube.invert(RubiksCube::MOVE(i));
         }
         return false;
     }
 
 public:
-    T rubikscube;
+    T rubiksCube;
 
-    DFSSOLVER(T _rubiksCube,int _max_search_depth){
-        rubikscube = _rubiksCube;
-        max_search_depth=_max_search_depth;
+    DFSSolver(T _rubiksCube, int _max_search_depth = 8) {
+        rubiksCube = _rubiksCube;
+        max_search_depth = _max_search_depth;
     }
 
-    vector<RubiksCube::MOVE> solve(){
+    vector<RubiksCube::MOVE> solve() {
         dfs(1);
         return moves;
     }
+
 };
+
 
 #endif

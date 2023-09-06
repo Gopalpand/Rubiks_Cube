@@ -1,6 +1,5 @@
-
-#ifndef RUBIKS_CUBE_SOLVER_RUBIKSCUBE_H
-#define RUBIKS_CUBE_SOLVER_RUBIKSCUBE_H
+#ifndef RUBIKSCUBE_H
+#define RUBIKSCUBE_H
 
 #include "bits/stdc++.h"
 using namespace std;
