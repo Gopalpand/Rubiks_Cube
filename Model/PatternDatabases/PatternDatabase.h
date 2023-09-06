@@ -1,7 +1,3 @@
-//
-// Created by Lakshya Mittal on 01-02-2022.
-//
-
 #ifndef PATTERNDATABASE_PATTERNDATABASE_H
 #define PATTERNDATABASE_PATTERNDATABASE_H
 
